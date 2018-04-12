@@ -26,7 +26,7 @@ app.use(expressStatic(staticPath, options));
 ```
 
 # Description
-Let's say client is on __/hello/world/__ page and requests __static-file.mp3__. It is relative path, so browser sends to the server full url __/hello/world/static-file.mp3__. In some cases we can't set absolute path, but want to get the necessary file. This library scan every part of url to find a match. It will try to get:
+Let's say client is on __/hello/world/__ page and requests __static-file.mp3__. It is relative path, so browser sends to the server full url __/hello/world/static-file.mp3__. In some cases we can't set absolute path, but want to get the necessary file. This library scans every part of url to find a match. It will try to get:
 
 * staticPath + /hello/world/static-file.mp3
 * staticPath + /world/static-file.mp3
