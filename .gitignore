@@ -1,0 +1,12 @@
+/node_modules
+
+*.vscode
+*.log
+*.bat
+*.exe
+*.idea
+*.git
+*.suo
+*.njsproj
+*.sln
+

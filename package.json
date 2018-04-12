@@ -1,0 +1,40 @@
+{
+  "name": "express-static-search",
+  "version": "0.1.0",
+  "description": "Module to get static files with deep scan of relative paths.",
+  "main": "./index.js",
+  "author": {
+    "name": "Balasyan Alexandr",
+    "email": "mywebstreet@gmail.com"
+  },
+  "keywords": [
+    "express",
+    "static",
+    "relative",
+    "absolute",
+    "path",
+    "deep",
+    "nested",
+    "search"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "chai": "^4.0.0",
+    "express": "^4.16.3",
+    "mocha": "^5.0.0",
+    "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "fs-extra": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ortexx/express-static-search"
+  },
+  "engines": {
+    "node": ">=5.0.0"
+  }
+}
