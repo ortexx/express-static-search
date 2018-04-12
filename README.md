@@ -10,6 +10,7 @@ const expressStatic = require("express-static-search");
 const express = require("express");
 const path = require("path");
 const app = express();
+
 const staticPath = path.join(__dirname, 'assets');
 
 const options = {
