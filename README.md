@@ -14,7 +14,7 @@ const staticPath = path.join(__dirname, 'assets');
 
 const options = {
   beforeSend: (res, fileName) => {
-    if(fileName == 'is-not-static.js') {
+    if(fileName.match('is-not-static.js')) {
       return false; // return false to cancel responding of this file
     }    
 
