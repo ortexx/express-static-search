@@ -12,7 +12,17 @@ const path = require("path");
 const app = express();
 const staticPath = path.join(__dirname, 'assets');
 
-app.use(expressStatic(staticPath));
+const options = {
+  beforeSend: (res, fileName) => {
+    if(fileName == 'is-not-static.js') {
+      return false; // return false to cancel responding of this file
+    }    
+
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+  }
+}
+
+app.use(expressStatic(staticPath, options));
 ```
 
 # Description

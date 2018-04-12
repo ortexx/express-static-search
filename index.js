@@ -3,7 +3,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-module.exports = function (staticPath) {
+module.exports = function (staticPath, options = {}) {
   function search (i, parts, callback) {
     const filePath = path.join(staticPath, parts.slice(i).join('/'));
 
@@ -27,23 +27,30 @@ module.exports = function (staticPath) {
   return function (req, res, next) {
     const url = req.path;
 
-    if(/.*\.[^.]+$/.test(url)) {      
-      const parts = url.split('/');
+    if(!/.*\.[^.]+$/.test(url)) {  
+      return next();
+    }    
 
-      search(0, parts, (err, file) => {
-        if(err) {
-          return next(err);
+    const parts = url.split('/');
+
+    search(0, parts, (err, file) => {
+      if(err) {
+        return next(err);
+      }
+
+      if(file) {
+        let act = true;
+
+        if(options.beforeSend) {
+          act = options.beforeSend(res, file) !== false;
         }
 
-        if(file) {
+        if(act) {
           return res.sendFile(file)
         }
+      }
 
-        next();
-      });
-    }
-    else {
       next();
-    }
+    });
   }
 };

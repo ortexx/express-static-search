@@ -12,9 +12,8 @@ describe('ExpressStaticSearch:', function () {
   let staticPath = path.join(__dirname, 'assets/');
 
   before(() => {
-    let staticFile = path.join(staticPath, '/static.mp3');
-    fs.ensureFileSync(staticFile);
-    fs.writeFileSync(staticFile, 'hello');
+    fs.ensureFileSync(path.join(staticPath, '/static.mp3'));
+    fs.ensureFileSync(path.join(staticPath, '/is-not-static.js'));
   });
 
   after(() => {
@@ -26,7 +25,11 @@ describe('ExpressStaticSearch:', function () {
 
   function createApp() {
     let app = express();
-    app.use(expressStatic(staticPath));
+    app.use(expressStatic(staticPath, {
+      beforeSend: (res, file) => {
+        return !file.match('is-not-static.js');
+      }
+    }));
     app.get('*', (req, res) => res.sendStatus(404));
     return app;
   }
@@ -56,6 +59,15 @@ describe('ExpressStaticSearch:', function () {
 
     request(app)
       .get('/non-existent.mp3')
+      .expect(404)
+      .end(done)
+  });
+
+  it('should not return excluded file', done => {
+    let app = createApp();
+
+    request(app)
+      .get('/is-not-static.js')
       .expect(404)
       .end(done)
   });
