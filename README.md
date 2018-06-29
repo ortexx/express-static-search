@@ -5,6 +5,7 @@ Module to get static files with deep scan of relative paths.
 `npm install express-static-search`
 
 # Example
+
 ```js
 const expressStatic = require("express-static-search");
 const express = require("express");
