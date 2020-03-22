@@ -1,6 +1,6 @@
 {
   "name": "express-static-search",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Module to get static files with deep scan of relative paths.",
   "main": "./index.js",
   "author": {
@@ -24,7 +24,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "express": "^4.17.1",
-    "mocha": "^5.2.0",
+    "mocha": "^7.1.1",
     "supertest": "^3.4.2"
   },
   "dependencies": {
