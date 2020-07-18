@@ -1,10 +1,10 @@
 {
   "name": "express-static-search",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Module to get static files with deep scan of relative paths.",
   "main": "./index.js",
   "author": {
-    "name": "Balasyan Alexandr",
+    "name": "Alexander Balasyan",
     "email": "mywebstreet@gmail.com"
   },
   "keywords": [
@@ -24,7 +24,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "express": "^4.17.1",
-    "mocha": "^7.1.1",
+    "mocha": "^7.2.0",
     "supertest": "^3.4.2"
   },
   "dependencies": {
