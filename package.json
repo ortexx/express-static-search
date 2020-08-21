@@ -1,6 +1,6 @@
 {
   "name": "express-static-search",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Module to get static files with deep scan of relative paths.",
   "main": "./index.js",
   "author": {

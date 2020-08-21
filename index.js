@@ -4,6 +4,8 @@ const fs = require('fs-extra');
 const path = require('path');
 
 module.exports = function (staticPath, options = {}) {
+  const nestingLimit = options.nestingLimit || 15;
+
   function search (i, parts, callback) {
     const filePath = path.join(staticPath, parts.slice(i).join('/'));
 
@@ -31,7 +33,11 @@ module.exports = function (staticPath, options = {}) {
       return next();
     }    
 
-    const parts = url.split('/');
+    let parts = url.split('/');
+
+    if(parts.length > nestingLimit) {
+      parts = parts.slice(0, nestingLimit);
+    }
 
     search(0, parts, (err, file) => {
       if(err) {

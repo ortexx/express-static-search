@@ -1,11 +1,9 @@
 "use strict";
 
-const assert = require('chai').assert;
 const express = require('express');
 const path = require('path');
 const fs = require('fs-extra');
 const request = require('supertest');
-const stream = require('stream');
 const expressStatic = require('../index');
 
 describe('ExpressStaticSearch:', function () {
@@ -19,9 +17,6 @@ describe('ExpressStaticSearch:', function () {
   after(() => {
     fs.removeSync(staticPath);
   });
-
-  let userName = 'Alex';
-  let userEmail = 'first@example.com';
 
   function createApp() {
     let app = express();
